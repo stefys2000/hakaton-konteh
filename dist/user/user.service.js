@@ -24,22 +24,6 @@ let UserService = class UserService {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
     }
-    async getAllUsers() {
-        try {
-            return await this.userRepository.find({
-                select: [
-                    'user_username',
-                    'user_first_name',
-                    'user_last_name',
-                    'user_id',
-                ],
-                order: { user_id: 'ASC' },
-            });
-        }
-        catch (error) {
-            throw new common_1.UnauthorizedException('Unauthorized request');
-        }
-    }
     async findUserById(user_id) {
         const found = await this.userRepository.findOne(user_id);
         if (!found) {
@@ -90,40 +74,6 @@ let UserService = class UserService {
         const salt = await bcrypt.genSalt();
         user.user_password = await bcrypt.hash(user_password, salt);
         await this.userRepository.save(user);
-    }
-    async updateUser(userUpdateDto, user) {
-        const { user_username, user_password, user_first_name, user_last_name } = userUpdateDto;
-        const user_find = await this.userRepository.findOne({
-            where: { user_id: user.user_id },
-        });
-        if (user_find) {
-            if (user_password) {
-                const salt = await bcrypt.genSalt();
-                user_find.user_password = await bcrypt.hash(user_password, salt);
-            }
-            if (user_username) {
-                const foundUsername = await this.userRepository.findOne({
-                    where: { user_username },
-                });
-                if (foundUsername) {
-                    throw new common_1.BadRequestException(`Korisnik sa korisničkim imenom ${user_username} već postoji`);
-                }
-                user_find.user_username = user_username;
-            }
-            if (user_first_name)
-                user_find.user_first_name = user_first_name;
-            if (user_last_name)
-                user_find.user_last_name = user_last_name;
-            try {
-                await this.userRepository.save(user_find);
-            }
-            catch (error) {
-                throw new common_1.BadRequestException(error);
-            }
-        }
-        else {
-            throw new common_1.NotFoundException('Korisnik nije pronadjen');
-        }
     }
 };
 UserService = __decorate([

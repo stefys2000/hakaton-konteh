@@ -16,7 +16,6 @@ exports.RoomController = void 0;
 const common_1 = require("@nestjs/common");
 const room_service_1 = require("./room.service");
 const room_dto_1 = require("./dto/room.dto");
-const passport_1 = require("@nestjs/passport");
 let RoomController = class RoomController {
     constructor(roomService) {
         this.roomService = roomService;
@@ -63,7 +62,6 @@ __decorate([
 ], RoomController.prototype, "updateRoom", null);
 RoomController = __decorate([
     (0, common_1.Controller)('room'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
     __metadata("design:paramtypes", [room_service_1.RoomService])
 ], RoomController);
 exports.RoomController = RoomController;

@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeskController = void 0;
 const common_1 = require("@nestjs/common");
 const desk_service_1 = require("./desk.service");
-const passport_1 = require("@nestjs/passport");
 const desk_dto_1 = require("./dto/desk.dto");
 let DeskController = class DeskController {
     constructor(deskService) {
@@ -93,7 +92,6 @@ __decorate([
 ], DeskController.prototype, "deleteDesk", null);
 DeskController = __decorate([
     (0, common_1.Controller)('desk'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
     __metadata("design:paramtypes", [desk_service_1.DeskService])
 ], DeskController);
 exports.DeskController = DeskController;

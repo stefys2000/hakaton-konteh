@@ -18,13 +18,9 @@ const user_service_1 = require("./user.service");
 const user_entity_1 = require("./user.entity");
 const user_dto_1 = require("./dto/user.dto");
 const get_user_decorator_1 = require("./get-user.decorator");
-const passport_1 = require("@nestjs/passport");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
-    }
-    async getAllUsers() {
-        return await this.userService.getAllUsers();
     }
     login(loginUserDto) {
         return this.userService.login(loginUserDto);
@@ -35,17 +31,7 @@ let UserController = class UserController {
     changePassword(userChangePassDto, user) {
         return this.userService.changePassword(userChangePassDto, user);
     }
-    updateUser(userUpdateDto, user) {
-        return this.userService.updateUser(userUpdateDto, user);
-    }
 };
-__decorate([
-    (0, common_1.Get)(),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], UserController.prototype, "getAllUsers", null);
 __decorate([
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
@@ -62,7 +48,6 @@ __decorate([
 ], UserController.prototype, "register", null);
 __decorate([
     (0, common_1.Patch)('/changePass'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, get_user_decorator_1.GetUser)()),
     __metadata("design:type", Function),
@@ -70,16 +55,6 @@ __decorate([
         user_entity_1.User]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "changePassword", null);
-__decorate([
-    (0, common_1.Patch)('/updateUser'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
-    __param(0, (0, common_1.Body)()),
-    __param(1, (0, get_user_decorator_1.GetUser)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_dto_1.UserUpdateDto,
-        user_entity_1.User]),
-    __metadata("design:returntype", Promise)
-], UserController.prototype, "updateUser", null);
 UserController = __decorate([
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService])

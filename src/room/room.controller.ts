@@ -9,7 +9,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('room')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class RoomController {
   constructor(private roomService: RoomService) {}
 

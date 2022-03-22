@@ -13,6 +13,7 @@ exports.Desk = void 0;
 const typeorm_1 = require("typeorm");
 const room_entity_1 = require("../room/room.entity");
 const user_entity_1 = require("../user/user.entity");
+const desk_features_list_entity_1 = require("./desk-features-list/desk-features-list.entity");
 let Desk = class Desk {
 };
 __decorate([
@@ -28,6 +29,10 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => room_entity_1.Room, (room) => room.desk),
     __metadata("design:type", room_entity_1.Room)
 ], Desk.prototype, "room", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => desk_features_list_entity_1.DeskFeaturesList, (deskFeaturesList) => deskFeaturesList.desk, { eager: true }),
+    __metadata("design:type", Array)
+], Desk.prototype, "deskFeaturesList", void 0);
 Desk = __decorate([
     (0, typeorm_1.Entity)()
 ], Desk);

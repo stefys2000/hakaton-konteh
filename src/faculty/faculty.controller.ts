@@ -5,7 +5,7 @@ import { RegisterFacultyDto, UpdateFacultyDto } from './dto/faculty.dto';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('faculty')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class FacultyController {
   constructor(private facultyService: FacultyService) {}
 

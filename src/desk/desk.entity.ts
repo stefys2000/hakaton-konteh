@@ -1,5 +1,4 @@
 import {
-  Column,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -9,6 +8,7 @@ import {
 } from 'typeorm';
 import { Room } from '../room/room.entity';
 import { User } from '../user/user.entity';
+import { DeskFeaturesList } from './desk-features-list/desk-features-list.entity';
 
 @Entity()
 export class Desk {
@@ -21,4 +21,11 @@ export class Desk {
 
   @ManyToOne(() => Room, (room) => room.desk)
   room: Room;
+
+  @OneToMany(
+    () => DeskFeaturesList,
+    (deskFeaturesList) => deskFeaturesList.desk,
+    { eager: true },
+  )
+  deskFeaturesList: DeskFeaturesList[];
 }

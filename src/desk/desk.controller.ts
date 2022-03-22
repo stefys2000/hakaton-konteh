@@ -20,7 +20,7 @@ import {
 } from './dto/desk.dto';
 
 @Controller('desk')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class DeskController {
   constructor(private deskService: DeskService) {}
 

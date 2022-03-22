@@ -16,7 +16,6 @@ exports.FacultyController = void 0;
 const common_1 = require("@nestjs/common");
 const faculty_service_1 = require("./faculty.service");
 const faculty_dto_1 = require("./dto/faculty.dto");
-const passport_1 = require("@nestjs/passport");
 let FacultyController = class FacultyController {
     constructor(facultyService) {
         this.facultyService = facultyService;
@@ -53,7 +52,6 @@ __decorate([
 ], FacultyController.prototype, "updateFaculty", null);
 FacultyController = __decorate([
     (0, common_1.Controller)('faculty'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
     __metadata("design:paramtypes", [faculty_service_1.FacultyService])
 ], FacultyController);
 exports.FacultyController = FacultyController;

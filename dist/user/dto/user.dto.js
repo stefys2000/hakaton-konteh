@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserUpdateDto = exports.UserChangePassDto = exports.LoginUserDto = exports.RegisterUserDto = void 0;
+exports.UserChangePassDto = exports.LoginUserDto = exports.RegisterUserDto = void 0;
 const class_validator_1 = require("class-validator");
 class RegisterUserDto {
 }
@@ -64,39 +64,4 @@ __decorate([
     __metadata("design:type", String)
 ], UserChangePassDto.prototype, "user_password", void 0);
 exports.UserChangePassDto = UserChangePassDto;
-class UserUpdateDto {
-}
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsUUID)(),
-    __metadata("design:type", String)
-], UserUpdateDto.prototype, "user_id", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(4),
-    (0, class_validator_1.MaxLength)(40),
-    __metadata("design:type", String)
-], UserUpdateDto.prototype, "user_username", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(4),
-    (0, class_validator_1.MaxLength)(40),
-    (0, class_validator_1.Matches)(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-        message: 'Password too week',
-    }),
-    __metadata("design:type", String)
-], UserUpdateDto.prototype, "user_password", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(4),
-    (0, class_validator_1.MaxLength)(20),
-    __metadata("design:type", String)
-], UserUpdateDto.prototype, "user_first_name", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(4),
-    (0, class_validator_1.MaxLength)(20),
-    __metadata("design:type", String)
-], UserUpdateDto.prototype, "user_last_name", void 0);
-exports.UserUpdateDto = UserUpdateDto;
 //# sourceMappingURL=user.dto.js.map
